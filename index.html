@@ -5,76 +5,150 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Name - Portfolio</title>
 
+  <!-- Add Google Font for custom font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Add Bootstrap for responsive design and styling -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
+    /* Basic body styling */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
+      background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradient background */
     }
+
+    /* Header styling */
     header {
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
+      background-image: url('header-bg.jpg'); /* Replace with your own image */
+      background-size: cover;
+      background-position: center;
+      color: white;
       text-align: center;
+      padding: 60px 0;
     }
+
     header h1 {
       margin: 0;
+      font-size: 3em;
     }
-    .content {
-      padding: 20px;
+
+    header p {
+      font-size: 1.2em;
     }
+
+    /* Project section styling */
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 20px;
+      padding: 20px;
     }
+
+    /* Project card styling */
     .project {
-      background: #fff;
+      background-color: #fff;
       padding: 15px;
       border-radius: 8px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
+    .project:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .project img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
     .project h2 {
-      margin: 0;
+      font-size: 1.5em;
+      margin-top: 10px;
     }
+
+    .project p {
+      font-size: 1em;
+    }
+
+    /* Footer styling */
     footer {
       text-align: center;
-      padding: 10px;
+      padding: 20px;
       background-color: #333;
-      color: #fff;
+      color: white;
+    }
+
+    /* Fade-in effect on scroll */
+    .fade-in {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Your Name</h1>
-  <p>Your short bio or tagline</p>
-</header>
+  <!-- Header Section -->
+  <header>
+    <h1>Your Name</h1>
+    <p>Software Developer | Designer | Creator</p>
+  </header>
 
-<div class="content">
+  <!-- Portfolio Projects Section -->
   <section class="projects">
-    <div class="project">
+    <div class="project fade-in">
+      <img src="project1.jpg" alt="Project 1">
       <h2>Project 1</h2>
-      <p>Short description of project 1.</p>
+      <p>A short description of your first project.</p>
     </div>
-    <div class="project">
+    <div class="project fade-in">
+      <img src="project2.jpg" alt="Project 2">
       <h2>Project 2</h2>
-      <p>Short description of project 2.</p>
+      <p>A short description of your second project.</p>
     </div>
-    <div class="project">
+    <div class="project fade-in">
+      <img src="project3.jpg" alt="Project 3">
       <h2>Project 3</h2>
-      <p>Short description of project 3.</p>
+      <p>A short description of your third project.</p>
     </div>
   </section>
-</div>
 
-<footer>
-  <p>Contact: your-email@example.com</p>
-</footer>
+  <!-- Footer Section -->
+  <footer>
+    <p>Contact: your-email@example.com</p>
+  </footer>
+
+  <!-- JavaScript for Smooth Scrolling and Fade-in Effect -->
+  <script>
+    // Smooth scrolling on anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Fade-in effect on scroll
+    window.addEventListener('scroll', function() {
+      const elements = document.querySelectorAll('.fade-in');
+      elements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add('visible');
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
